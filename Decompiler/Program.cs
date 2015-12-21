@@ -207,6 +207,18 @@ namespace Decompiler
                                 data = ms.ToArray();
                             }
 
+                            if (Options.SaveSheet && ((Texture)resource.Blocks[BlockType.DATA]).ExtraData.ContainsKey(VTexExtraData.SHEET))
+                            {
+                                byte[] sheetdata;
+                                if (((Texture)resource.Blocks[BlockType.DATA]).ExtraData.TryGetValue(VTexExtraData.SHEET, out sheetdata))
+                                {
+                                    var sheetpath = Path.ChangeExtension(path, ".png.sheet");
+                                    sheetpath = Path.GetFileName(sheetpath);
+                                    DumpFile(sheetpath, sheetdata);
+                                }
+                            }
+                           
+
                             break;
                         case ResourceType.SoundEventScript:
                             extension = "vsndevts";

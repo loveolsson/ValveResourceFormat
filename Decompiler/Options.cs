@@ -38,6 +38,10 @@ namespace Decompiler
             HelpText = "Write a file with files in given VPK and their CRC.")]
         public bool OutputVPKDir { get; set; }
 
+        [Option("sheet", DefaultValue = false,
+            HelpText = "Save texture sheet data if present.")]
+        public bool SaveSheet { get; set; }
+
         [HelpOption]
         public string GetUsage()
         {
